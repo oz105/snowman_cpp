@@ -18,6 +18,11 @@ using namespace ariel;
 //  (BBB)
 
 TEST_CASE("Good snowman code") {
+
+    CHECK("\n"+snowman(11111111) == string("\n _===_\n (.,.)\n<( : )>\n ( : )\n"));
+    CHECK("\n"+snowman(22222222) == string("\n  ___\n .....\n\\(o.o)/\n (] [)\n (\" \")\n"));
+    CHECK("\n"+snowman(33333333) == string("\n   _\n  /_\\\n (O_O)\n/(> <)\\\n (___)\n"));
+    CHECK("\n"+snowman(44444444) == string("\n  ___\n (_*_)\n (- -)\n (   )\n (   )\n"));
     
     // //Check Hats
     CHECK("\n"+snowman(11114411) == string("\n _===_\n (.,.)\n ( : )\n ( : )\n"));
@@ -77,11 +82,8 @@ TEST_CASE("Good snowman code") {
     CHECK("\n"+snowman(12222212) == string("\n _===_\n\\(o.o)/\n ( : )\n (\" \")\n"));
     CHECK("\n"+snowman(33232124) == string("\n   _\n  /_\\\n\\(o_O)\n (] [)>\n (   )\n"));
     CHECK("\n"+snowman(32443333) == string("\n   _\n  /_\\\n (-.-)\n/(> <)\\\n (___)\n"));
-    // CHECK("\n"+snowman(44444432) == string("\n  ___ \n (_*_)\n (- -)\n (> <)\n (\" \")\n"));
-    // CHECK("\n"+snowman(44242123) == string("\n  ___ \n (_*_)\n\\(O -)\n (] [)>\n (___)\n"));
-    // CHECK("\n"+snowman(41341144) == string("\n  ___ \n (_*_)\n (O,-)\n<(   )>\n (   )\n"));
     
-    /* Add more checks here */
+
 }
 
 TEST_CASE("Bad snowman code") {
@@ -90,7 +92,7 @@ TEST_CASE("Bad snowman code") {
     for (size_t i = 0; i < 30; i++){
         int min_rnd = (rand() % min_num); // pick random number between [0,11111111) - small num 
         CHECK_THROWS(snowman(min_rnd));
-        int max_rnd = rand()+(max_num+1) ; // pick random number between [44444445,max value) - big num
+        int max_rnd = (rand()%100000)+(max_num+1) ; // pick random number between [44444445,4444444+100000) - big num
         CHECK_THROWS(snowman(max_rnd));
         int minus_rnd = (rand() % max_num) - (max_num + 1 ) ; // pick random number between [-1, -44444445] - nagtive number
         CHECK_THROWS(snowman(minus_rnd));
@@ -120,5 +122,3 @@ TEST_CASE("input with numbers <11111111") {
 }
 
 
-
-/* Add more test cases here */
